@@ -1,0 +1,21 @@
+.twocol {
+    display: flex;
+    flex-direction: row;
+}
+
+.onecol {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+li {
+    height: 25px;
+    width: 100px;
+}
+
+.copy-item:hover {
+    cursor: pointer;
+    background-color: hsl(0, 0, 85%);
+}
