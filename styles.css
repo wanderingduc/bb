@@ -84,3 +84,12 @@ h3 {
 .v-fill {
     height: 100%;;
 }
+
+.bottom-fixed {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: hsl(40, 1%, 75%);
+    font-size: 0.75rem;
+    z-index: 5;
+}

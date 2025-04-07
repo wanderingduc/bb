@@ -6,6 +6,7 @@ const oldulgt = document.getElementById('old-gold200');
 const olduldt = document.getElementById('old-death200');
 const oldulgo = document.getElementById('old-gold100');
 const olduldo = document.getElementById('old-death100');
+const updated = document.getElementById('update-time');
 let newLi;
 
 async function meta(){
@@ -182,6 +183,8 @@ async function get_c(){
 
     })
     .finally(() => {
+        const now = new Date();
+        updated.innerHTML = "Updated: " + now;
         console.log("Done")
     })
     .catch(e => {
