@@ -69,6 +69,53 @@ async function get_old_c(){
 }
 
 async function get_c(){
+
+    const localData = localStorage.getItem("stocks");
+
+    if (localData != null){
+
+        // console.log(localData);
+
+        const localJSON = JSON.parse(localData)
+
+        // console.log(localJSON.date);
+
+        if (isToday(localJSON.date)){
+            
+            uldo.innerHTML = '';
+            uldt.innerHTML = '';
+            ulgo.innerHTML = '';
+            ulgt.innerHTML = '';
+
+            const stocks = localJSON.stocks
+
+            for (let i=0; i<stocks.length; i++){
+                const crosses = stocks[i].cross;
+                if (crosses.one == 'Death'){
+                    newLi = document.createElement("li");
+                    newLi.textContent = stocks[i].ticker;
+                    uldo.appendChild(newLi);
+                }
+                if (crosses.one == 'Gold'){
+                    newLi = document.createElement("li");
+                    newLi.textContent = stocks[i].ticker;
+                    ulgo.appendChild(newLi);
+                }
+                if (crosses.two == 'Death'){
+                    newLi = document.createElement("li");
+                    newLi.textContent = stocks[i].ticker;
+                    uldt.appendChild(newLi);
+                }
+                if (crosses.two == 'Gold'){
+                    newLi = document.createElement("li");
+                    newLi.textContent = stocks[i].ticker;
+                    ulgt.appendChild(newLi);
+                }
+                console.log(crosses.one==null, crosses.two==null)
+            }
+        }
+    }
+
     const r = await fetch('http://13.41.110.181:8080/anal/', {
         method: 'GET',
         mode: 'cors',
@@ -92,6 +139,18 @@ async function get_c(){
         return data.data
     })
     .then(stocks => {
+
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = now.getMonth();
+        const d = now.getDate();
+        const date = y + "-" + m + "-" + d;
+    
+        let toStore = {
+            "date": date,
+            "stocks": []
+        }
+
         for (let i=0; i<stocks.length; i++){
             const crosses = stocks[i].cross;
             if (crosses.one == 'Death'){
@@ -114,8 +173,13 @@ async function get_c(){
                 newLi.textContent = stocks[i].ticker;
                 ulgt.appendChild(newLi);
             }
+            toStore['stocks'].push(stocks[i])
             console.log(crosses.one==null, crosses.two==null)
         }
+
+        localStorage.setItem("stocks", JSON.stringify(toStore))
+        console.log(localStorage.getItem("stocks"))
+
     })
     .finally(() => {
         console.log("Done")
@@ -123,7 +187,19 @@ async function get_c(){
     .catch(e => {
         console.error(e)
     })
-        
+}
+
+function isToday(date){
+    const now = new Date();
+    const day = now.getDate();
+    const month = now.getMonth();
+    const year = now.getFullYear();
+
+    const d = date.split("-")
+    if (d[0] != year || d[1] != month || d[2] != day){
+        return false
+    }
+    return true
 }
 
 function timecheck(){
