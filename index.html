@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
 </head>
-<body onload="get_c()">
+<body onload="meta()">
     <div id="container"  class="twocol">
         <div class="onecol sec">
             <h2>Today</h2>
             <div id="curr" class="twocol">
                 <div class="onecol">
-                    <h2 class="bg-green">Gold</h2>
+                    <h2 class="bg-red">Death</h2>
                     <div class="twocol">
                         <div class="onecol dark v-fill">
                             <h3>50/100</h3>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="onecol">
-                    <h2 class="bg-red">Death</h2>
+                    <h2 class="bg-green">Gold</h2>
                     <div class="twocol">
                         <div class="onecol dark v-fill">
                             <h3>50/100</h3>
@@ -51,28 +51,36 @@
             <h2>Historical</h2>
             <div id="prev" class="twocol">
                 <div class="onecol">
-                    <h2 class="bg-green">Gold</h2>
-                    <div class="twocol">
-                        <div class="onecol dark v-fill">
-                            <h3>50/200</h3>
-                            <ul id="old-gold200"></ul>
-                        </div>
-                        <div class="onecol light v-fill">
-                            <h3>50/100</h3>
-                            <ul id="old-gold100"></ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="onecol">
                     <h2 class="bg-red">Death</h2>
                     <div class="twocol">
                         <div class="onecol dark v-fill">
                             <h3>50/200</h3>
-                            <ul id="old-death200"></ul>
+                            <ul id="old-gold200">
+                                <li>loading...</li>
+                            </ul>
                         </div>
                         <div class="onecol light v-fill">
                             <h3>50/100</h3>
-                            <ul id="old-death100"></ul>
+                            <ul id="old-gold100">
+                                <li>loading...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="onecol">
+                    <h2 class="bg-green">Gold</h2>
+                    <div class="twocol">
+                        <div class="onecol dark v-fill">
+                            <h3>50/200</h3>
+                            <ul id="old-death200">
+                                <li>loading...</li>
+                            </ul>
+                        </div>
+                        <div class="onecol light v-fill">
+                            <h3>50/100</h3>
+                            <ul id="old-death100">
+                                <li>loading...</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
